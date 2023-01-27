@@ -31,60 +31,12 @@
 #   Basic setup of `exa`
 #   ───────────────────────────────────────────────────────────────────────────
 
-#   Define default exa flags.
-#   1. Show icons.
-#   2. Group directories first.
-    EXA_FLAGS="--icons --group-directories-first"
-
 #   Re-define `exa` command for prettier displaying.
 #   - Clear screen before showing listing.
 #   - Add an empty line, then print the present working directory.
 #   - Add another empty line,
 #   - Tell `exa` to use the flags defined above, & finally show the listing. 
     alias exa="clear && pwd && echo && exa $EXA_FLAGS"
-
-#   Define list of filenames to ignore in listing.
-#   - NOTE: Be careful to remember the escape-symbols at the end of the line.
-    EXA_IGNORE="\
-        |*.pyc|\
-        |*.pyo|\
-        |.CFUserTextEncoding|\
-        |.DS_Store|\
-        |.archey-ip|\
-        |.chatgpt|\
-        |.cups|\
-        |.dartServer|\
-        |.dart|\
-        |.docker|\
-        |.doom.d|\
-        |.emacs.d|\
-        |.flutter-devtools|\
-        |.flutter|\
-        |.gem|\
-        |.git-credentials|\
-        |.gitignore|\
-        |.git|\
-        |.ipynb_checkpoints|\
-        |.mono|\
-        |.ob-jupyter|\
-        |.pub-cache|\
-        |.putty|\
-        |.ssh|\
-        |.swiftpm|\
-        |.terminfo|\
-        |.thumbnails|\
-        |.viminfo|\
-        |Cargo.lock|\
-        |__pycache__|\
-        |desktop.ini|\
-        |dist|\
-        |env|\
-        |node_modules|\
-        |pkg|\
-        |target|\
-        |venv|\
-        |.venv|\
-        "
 
 #   Re-define `ls` command to ignore the just-defined list of files...
     alias ls="exa -a -I \"$EXA_IGNORE\""
