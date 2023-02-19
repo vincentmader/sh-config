@@ -1,6 +1,6 @@
 #/bin/sh
 # ╔═══════════════════════════════════════════════════════════════════════════╗
-# ║                         $XDG_CONFIG_HOME/zsh/aliasrc                      ║
+# ║                       $XDG_CONFIG_HOME/shell/aliasrc                      ║
 # ╚═══════════════════════════════════════════════════════════════════════════╝
 #  -> A collection of commonly used shell-command aliases.
 
@@ -151,6 +151,13 @@
 #   Re-map `del` command to recursive `rmtrash`.
   # alias del="rmtrash -r"                                           (unused)
   # alias rm="echo \"'rm' has been deactivated. use 'del' instead!\""
+
+  function rmdir_clean() {
+    dir="$1"
+    rm "$dir/.DS_Store" 2> /dev/null
+    rmdir "$dir"
+  }
+  alias rmdir="rmdir_clean"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Text Editor: Vi/Vim/Neovim & Emacs Doom                                      │
