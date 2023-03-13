@@ -17,12 +17,10 @@
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Locale Setup                                                              │
 # ╰───────────────────────────────────────────────────────────────────────────╯
-#   These variables tell the OS how to display/output certain kinds of text.
-#   To see the current configuration, execute `locale` in your shell.
-#
-#   There are several different locale categories, 
-#   which are looked up by the system in the following order:
-#     `LANGUAGE` -> `LC_ALL` -> `LC_xxx` -> `LANG`
+#   These variables tell the OS how to display/output certain kinds of text. 
+#   To see the current configuration, execute `locale` in your shell. There are 
+#   several different locale categories, which are looked up by the system in 
+#   the following order: `LANGUAGE` -> `LC_ALL` -> `LC_xxx` -> `LANG`
 
 #   Default all locale settings to UTF-8 American English. 
     export LC_ALL="en_US.UTF-8"
@@ -37,27 +35,23 @@
     export HISTFILESIZE=10000000
 
 #   Deactivate macOS's "Save/Restore Shell State" feature for Zsh.
-#   This disables the creation of the `.zsh_sessions` file -> cleaner home.
+#   This disables the creation of the `.zsh_sessions` file -> Cleaner home.
     export SHELL_SESSIONS_DISABLE=1
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Editor & Visual (vi/vim/neovim/neovide)                                   │
 # ╰───────────────────────────────────────────────────────────────────────────╯
-#   If you invoke an editor via your shell:
-#   -> It will first try `$VISUAL`.
-#   -> If that fails, it tries `$EDITOR`.
-#     (e.g. if your terminal does not support a full-screen editor)
-#   One could e.g. set `$VISUAL` to VSCode, and `$EDITOR` to vi.
-#   Since I'm using vi anyways, both variables are the same.
+#   If you invoke an editor via your shell, it will first try `$VISUAL`, and if
+#   that fails, it tries `$EDITOR`. One could e.g. set `$VISUAL` to VSCode, and
+#   `$EDITOR` to vi. Since I'm using vi anyways, both variables are the same.
 
 #   If the shell is running inside an SSH connection: Use vanilla vim.
-    if [[ -n $SSH_CONNECTION ]]; then
+    if [[ -n $SSH_CONNECTION ]]; then;
       export EDITOR="vim"; 
 #   Otherwise: Use neovim.
     else
       export EDITOR="nvim"
     fi
-
 #   Configure $VISUAL to just use $EDITOR as well (both are vi/vim, anyway).
     export VISUAL="$EDITOR"     
 
@@ -66,10 +60,8 @@
 
 #   TODO Look-up re: Define $VIMRUNTIME variable as well?
   # export VIMRUNTIME="$XDG_CONFIG_HOME/nvim/"
-
 #   TODO Look-up re: Define $VIM variable as well?
   # export VIM="$XDG_CONFIG_HOME/vim"
-
 #   Define path to neovim configuration file (init.vim).
   # export NVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
 
@@ -84,9 +76,7 @@
 # │ Rust & Cargo                                                              │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
-#   Give a home to Rust...
     export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-#   ...and Cargo.
     export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
@@ -96,46 +86,30 @@
 #         $IPYTHONDIR & $JUPYTER_CONFIG_DIR weirdly seems to lead to 
 #         an error on `jupyter notebook` execution.
 
-#   Define path to the python-startup configuration file.
     export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/.pythonrc"
-
-#   Define path to matplotlib configuration file.
     export MPLCONFIGDIR="$XDG_CONFIG_HOME/matplotlib"
-
-#   Define path to directory containing jupyter configuration files.
     export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-
-#   Define path to ipython cache files.
     export IPYTHONDIR="$XDG_DATA_HOME/ipython"
-    
-#   Define path to pylint config file.
     export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Julia                                                                     │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
-#   Define path to julia files.
     export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
     
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ JavaScript, NodeJS, & NPM                                                 │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
-#   Define path to the Node Package Manager's configuration file.
     export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-
-#   Define path to Node REPL history file.
     export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
-
-#   Define number of Node REPL history entries.
     export NODE_REPL_HISTORY_SIZE=10000000
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Go                                                                        │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
-#   Define path to Go cache files.
     export GOPATH="$XDG_CACHE_HOME/go"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
@@ -223,8 +197,8 @@
 # │ Less                                                                      │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
-#   Deactivate logging to history file.
-    export LESSHISTFILE=- # "$HOME/.cache/lesshst"
+    export LESSHISTFILE=- # Deactivate logging.
+    # export LESSHISTFILE="$HOME/.local/share/less/lesshst"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ CocoaPods                                                                 │
@@ -243,14 +217,6 @@
 
     export CUPS_CACHEDIR="$XDG_CACHE_HOME/cups"
     export CUPS_DATADIR="$XDG_DATA_HOME/cups"
-
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ TaskWarrior (inactive)                                                    │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-
-  # export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
-  # export TIMEWARRIORDB="$HOME/gtd/timewarrior"
-  # export WIKI="~/"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Various                                                                   │
@@ -341,6 +307,14 @@
 #         ||\
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
+# │ TaskWarrior (inactive)                                                    │
+# ╰───────────────────────────────────────────────────────────────────────────╯
+
+  # export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
+  # export TIMEWARRIORDB="$HOME/gtd/timewarrior"
+  # export WIKI="~/"
+
+# ╭───────────────────────────────────────────────────────────────────────────╮
 # │ TMUX                                                                      │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 # TODO Move to shellrc / zshrc ?!
@@ -348,13 +322,7 @@
 #   Source TMUX config.
     tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
 
-
-
-
-
-
-
-
-
-# Other
-export ORG_PROJECTS="~/org/Things"
+# ╭───────────────────────────────────────────────────────────────────────────╮
+# │ Org Projects                                                              │
+# ╰───────────────────────────────────────────────────────────────────────────╯
+    # export ORG_PROJECTS="~/org/Things"
