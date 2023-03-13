@@ -129,12 +129,12 @@
     alias t="touch"
 
 #   Re-define `mkdir` / `md` commands to automatically move into target.
-    function func_mkcdir() {
-        command mkdir -pv "$1";
-        cd "$1";
-    }
-    alias md=func_mkcdir
-    alias mkdir=func_mkcdir
+  # function func_mkcdir() {
+  #     command mkdir -pv "$1";
+  #     cd "$1";
+  # }
+  # alias mkdir=func_mkcdir
+    alias md=mkdir
 
 #   Re-define `mv` command to ask before overwriting an existing file.
     alias mv="mv -i"

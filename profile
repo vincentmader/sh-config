@@ -4,48 +4,41 @@
 # ╚═══════════════════════════════════════════════════════════════════════════╝
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
-# │ XDG base directories                                                      │
+# │ XDG Base Directories                                                      │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 #   For more XDG variables, see here: 
 #   -> specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
-#   Define path to user-specific data files.
-    export XDG_DATA_HOME="$HOME/.local/share"
-#   Define path to user-specific configuration files.
     export XDG_CONFIG_HOME="$HOME/.config"
-#   Define path to user-specific state data files.
-    export XDG_STATE_HOME="" 
-#   Define path to user-specific non-essential (cached) data files.
+    export XDG_DATA_HOME="$HOME/.local/share"
     export XDG_CACHE_HOME="$HOME/.cache"
+    export XDG_STATE_HOME="" 
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Locale Setup                                                              │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 #   These variables tell the OS how to display/output certain kinds of text.
+#   To see the current configuration, execute `locale` in your shell.
 #
 #   There are several different locale categories, 
 #   which are looked up by the system in the following order:
-#   1. LANGUAGE
-#   2. LC_ALL
-#   3. LC_xxx
-#   4. LANG
-#   To see the current configuration, execute `locale` in your shell.
+#     `LANGUAGE` -> `LC_ALL` -> `LC_xxx` -> `LANG`
 
 #   Default all locale settings to UTF-8 American English. 
     export LC_ALL="en_US.UTF-8"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Shell                                                                     │
+# │ Shell History                                                             │
 # ╰───────────────────────────────────────────────────────────────────────────╯
+
+#   Define path to shell-command history file.
+    export HISTFILE="$XDG_CACHE_HOME/shell/history"
+#   Define max. nr. of entries in shell-command history file.
+    export HISTFILESIZE=10000000
 
 #   Deactivate macOS's "Save/Restore Shell State" feature for Zsh.
 #   This disables the creation of the `.zsh_sessions` file -> cleaner home.
     export SHELL_SESSIONS_DISABLE=1
-
-#   Define path to shell-command history file.
-    export HISTFILE="$XDG_CACHE_HOME/shell/history"
-#   Define size of shell-command history file (nr. of entries).
-    export HISTFILESIZE=10000000
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Editor & Visual (vi/vim/neovim/neovide)                                   │
@@ -92,9 +85,9 @@
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
 #   Give a home to Rust...
-    export RUSTUP_HOME="$XDG_CACHE_HOME/rustup"
+    export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 #   ...and Cargo.
-    export CARGO_HOME="$XDG_CACHE_HOME/cargo"
+    export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Python                                                                    │
@@ -308,6 +301,7 @@
         |.dartServer|\
         |.dart|\
         |.docker|\
+        |.dockerignore|\
         |.doom.d|\
         |.emacs.d|\
         |.flutter-devtools|\
@@ -336,11 +330,31 @@
         |target|\
         |venv|\
         |.venv|\
+        |.pdbhistory|\
+        |.python_history|\
+        |.zsh_history|\
         "
+
+        # |~/.config/*|\  -> only works on relogin (I guess?)
+#         ||\
+#         ||\
+#         ||\
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ TMUX                                                                      │
 # ╰───────────────────────────────────────────────────────────────────────────╯
+# TODO Move to shellrc / zshrc ?!
 
 #   Source TMUX config.
     tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
+
+
+
+
+
+
+
+
+
+# Other
+export ORG_PROJECTS="~/org/Things"
