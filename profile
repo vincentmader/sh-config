@@ -66,6 +66,13 @@
   # export NVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
+# │ Emacs Doom                                                                │
+# ╰───────────────────────────────────────────────────────────────────────────╯
+
+#   Add `.emacs.d/bin` to `$PATH` for easier usage of `doom` command.
+    export PATH="$PATH:$HOME/.emacs.d/bin"
+
+# ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Browser                                                                   │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
@@ -299,6 +306,7 @@
         |.pdbhistory|\
         |.python_history|\
         |.zsh_history|\
+        |kees_solvers|\
         "
 
         # |~/.config/*|\  -> only works on relogin (I guess?)
