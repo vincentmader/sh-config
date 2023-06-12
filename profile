@@ -331,6 +331,7 @@
     tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Org Projects                                                              │
+# │ Emacs Org-Mode Home Directory                                             │
 # ╰───────────────────────────────────────────────────────────────────────────╯
-    # export ORG_PROJECTS="~/org/Things"
+
+    export ORG_HOME="~/org"
