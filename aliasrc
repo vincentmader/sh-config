@@ -3,30 +3,32 @@
 # ║                       $XDG_CONFIG_HOME/shell/aliasrc                      ║
 # ╚═══════════════════════════════════════════════════════════════════════════╝
 #  -> A collection of commonly used shell-command aliases.
-
+# 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ General                                                                   │
 # ╰───────────────────────────────────────────────────────────────────────────╯
-
-#   Power down this computer.
-    alias bye="sudo shutdown now"
-
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Shell                                                                     │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# Define shortcuts for quick-sourcing configuration files.                  {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Source zsh configuration.
     alias sozsh="source \"$XDG_CONFIG_HOME/zsh/zshrc\""
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Directory listing                                                         │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Define shortcuts for very commonly used commands.                         {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Re-define `pwd` command to print actual path without symbolic links.
     alias pwd="pwd -P"
 
 #   Define shorter `clear` command.
     alias c="clear"
+
+# }}}
+# ╭───────────────────────────────────────────────────────────────────────────╮
+# │ Directory Listing                                                         │
+# ╰───────────────────────────────────────────────────────────────────────────╯
+# Configure `exa`.                                                          {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Basic setup of `exa`
 #   ───────────────────────────────────────────────────────────────────────────
@@ -82,9 +84,23 @@
     alias ltt5="ltt -L 5"
     alias ltt4="ltt -L 4"
    
+
+
+
+# }}}
+# Configure `ranger`.                                                       {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define shorter command for `ranger`.
+    alias r="ranger"
+#   TODO: Decide re: Switch to `lf` or `nnn` instead?
+
+# }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Directory navigation                                                      │
+# │ Directory Navigation                                                      │
 # ╰───────────────────────────────────────────────────────────────────────────╯
+# Configure `zoxide`.                                                       {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Re-define `cd` command to automatically move list the target's contents.
 #   -> NOTE: needs to be defined AFTER above `exa` binds to `l`
@@ -102,42 +118,12 @@
     alias ...='cd ../..'
     alias ....='cd ../../..'
 
-#   FuzzyFind
-#   ───────────────────────────────────────────────────────────────────────────
-
-    alias fzf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-  # alias fzf="fzf --preview='head -$LINES {}'"
-
-  # alias fe="fzf --exact"
-  # alias fv="v $(fzf --height 40%)"
-  # alias fo="open $(fzf)"
-  # function find() {
-  #     if [ $# = 1 ];
-  #     then
-  #         command find . -iname "*$@*"
-  #     else
-  #         command find "$@"
-  #     fi
-  # }
-  # alias vf="v $(fzf)"  # TODO: ? -> fix
-
+# }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Directory hierarchy editing                                               │
+# │ Directory Hierarchy Editing                                               │
 # ╰───────────────────────────────────────────────────────────────────────────╯
-
-#   Define shorter `touch` command.
-    alias t="touch"
-
-#   Re-define `mkdir` / `md` commands to automatically move into target.
-  # function func_mkcdir() {
-  #     command mkdir -pv "$1";
-  #     cd "$1";
-  # }
-  # alias mkdir=func_mkcdir
-    alias md=mkdir
-
-#   Re-define `mv` command to ask before overwriting an existing file.
-    alias mv="mv -i"
+# Configure `cp`.                                                           {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Re-define `cp` command to 
 #   - always act recursively,
@@ -145,12 +131,35 @@
 #   - show verbose output.
     alias cp="cp -riv"
 
+# }}}
+# Configure `ln`.                                                           {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
 #   Make symbolic link creation more verbose.
     alias ln="ln -v"
 
-#   Re-map `del` command to recursive `rmtrash`.
-  # alias del="rmtrash -r"                                           (unused)
-  # alias rm="echo \"'rm' has been deactivated. use 'del' instead!\""
+# }}}
+# Configure `mkdir`. {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Re-define `mkdir` / `md` commands to automatically move into target.
+  # function func_mkcdir() {
+  #     command mkdir -pv "$1";
+  #     cd "$1";
+  # }
+  # alias mkdir=func_mkcdir
+    alias mkd=mkdir
+
+# }}}
+# Configure `mv`.                                                           {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Re-define `mv` command to ask before overwriting an existing file.
+    alias mv="mv -i"
+
+# }}}
+# Configure `rmdir`. {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
   function rmdir_clean() {
     dir="$1"
@@ -159,12 +168,40 @@
   }
   alias rmdir="rmdir_clean"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Text Editor: Vi/Vim/Neovim & Emacs Doom                                      │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Configure `touch`.                                                        {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
-# Vi/Vim/NeoVim
-# ─────────────────────────────────────────────────────────────────────────────
+#   Define shorter `touch` command.
+    alias t="touch"
+
+# }}}
+# ╭───────────────────────────────────────────────────────────────────────────╮
+# │ Text Editing                                                              │
+# ╰───────────────────────────────────────────────────────────────────────────╯
+# Configure `Emacs` & `Doom`.                                               {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Make Emacs either...
+#   1. ...load a file (or multiple), 
+#         if specified via e.g. `nvim file_1 file_2`.
+#   2. ...load the file listing for the current directory, 
+#         if no file is specified, such that `emacs` behaves like `emacs ./`.
+    function emacsclient_func {
+        if [ "$#" -eq 0 ]; then
+            emacsclient .
+        else
+            emacsclient $@
+        fi
+    }
+    alias emacsclient="emacsclient_func"
+
+#   Define shorter `emacsclient` command.
+    alias e="emacsclient"
+
+# }}}
+# Configure `vim` & `neovim`.                                               {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Make vim use the configuration file `$XDG_CONFIG_HOME/vim/vimrc`.
     alias vim="vim -u $XDG_CONFIG_HOME/vim/vimrc"
@@ -195,29 +232,156 @@
 #   Define shorter `nvim` command.
     alias v="nvim"
 
-# Emacs Doom
-# ─────────────────────────────────────────────────────────────────────────────
-
-#   Make emacs either...
-#   1. ...load a file (or multiple), 
-#         if specified via e.g. `nvim file_1 file_2`.
-#   2. ...load the file listing for the current directory, 
-#         if no file is specified, such that `emacs` behaves like `emacs ./`.
-    function emacsclient_func {
-        if [ "$#" -eq 0 ]; then
-            emacsclient .
-        else
-            emacsclient $@
-        fi
-    }
-    alias emacsclient="emacsclient_func"
-
-#   Define shorter `emacsclient` command.
-    alias e="emacsclient"
-
+# }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Version Control using Git                                                 │
+# │ Computer Languages                                                        │
 # ╰───────────────────────────────────────────────────────────────────────────╯
+# Configure "Julia".                                                        {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define a shorter command for starting the Julia interpreter.
+    alias jl="julia"
+
+# }}}
+# Configure "Python" & `python-pip`.                                        {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Make sure that Python version 3.x is used. Don't use version 2.x.
+    alias python="python3"
+    alias pip="pip3"
+
+#   Define a shorter command for starting the Python interpreter.
+    alias py3="python"
+    alias py="py3"
+
+#   Define a shorter command for starting Jupyter Notebooks.
+    alias jn="jupyter notebook"
+
+# }}}
+# Configure "Rust" & `cargo`.                                               {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define shorter cargo commands.
+    alias cgn="clear && cargo new"
+    alias cgr="clear && cargo run"
+    alias cgd="clear && cargo doc"
+    alias cgb="clear && cargo build"
+    alias cgc="clear && cargo check"
+    alias cgt="clear && cargo test"
+    alias cgi="clear && cargo install"
+
+# }}}
+# ╭───────────────────────────────────────────────────────────────────────────╮
+# │ Package Managers                                                          │
+# ╰───────────────────────────────────────────────────────────────────────────╯
+# Configure `brew` (on macOS).                                              {{{
+# ═════════════════════════════════════════════════════════════════════════════
+#   NOTE: Shortcuts are inactive at the moment.
+
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        :  # Do nothing.
+
+        # alias bs="brew search"
+        # alias bt="brew tap"
+        # alias bi="brew install"
+        # alias bci="brew install --cask"  
+        # alias bu="brew uninstall"
+        # alias buu="brew update && brew upgrade"
+    fi
+
+# }}}
+# Configure `npm`.                                               {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define a shorter command for installing NodeJS packages via NPM.
+    alias npmi="npm install"
+
+#   Define a shorter command for updating NPM packages.
+    alias npmu="npm install npm@latest -g"
+
+#   Define a shorter command for running NPM builds.
+    alias npmrb="npm run build"
+
+#   Define a shorter command for creating a new React web-app using NPX.
+  # alias npxcra="npx create-react-app"                            # (inactive)
+
+# }}}
+# Configure `pacman` and `yay` (on Arch Linux).                             {{{
+# ═════════════════════════════════════════════════════════════════════════════
+#   NOTE: Shortcuts are inactive at the moment.
+
+    if [[ "$OSTYPE" == "linux"* ]]; then
+        : # Do nothing
+    fi
+
+# }}}
+# ╭───────────────────────────────────────────────────────────────────────────╮
+# │ Search                                                                    │
+# ╰───────────────────────────────────────────────────────────────────────────╯
+# Configure `fzf` fuzzy-find search.                                        {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    alias fzf="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+  # alias fzf="fzf --preview='head -$LINES {}'"
+
+  # alias fe="fzf --exact"
+  # alias fv="v $(fzf --height 40%)"
+  # alias fo="open $(fzf)"
+  # function find() {
+  #     if [ $# = 1 ];
+  #     then
+  #         command find . -iname "*$@*"
+  #     else
+  #         command find "$@"
+  #     fi
+  # }
+  # alias vf="v $(fzf)"  # TODO: ? -> fix
+
+# }}}
+# ╭───────────────────────────────────────────────────────────────────────────╮
+# │ Web-Scrapers                                                              │
+# ╰───────────────────────────────────────────────────────────────────────────╯
+# Configure `instaloader`.                                                  {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define shortcut to instagram scraper.
+    alias instadl="instaloader\
+        --stories\
+        --highlights\
+        --igtv\
+        --no-captions\
+        --login vincent.mader"
+
+# }}}
+# Configure `wget`. {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Re-define `wget` command to use custom history-file.
+    alias wget="wget --hsts-file \"$XDG_CACHE_HOME/wget/wget-hsts\""
+
+# }}}
+# Configure `web_search`. {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define shorter `web_search` command.
+#   NOTE: See `../zsh/zprofile` for search-engine definitions.
+    alias web="web_search"
+#   TODO Think re: Create a separate `zsh_aliasrc`?
+
+# }}}
+# Configure `youtube-dl`.                                                   {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define shortcut to youtube scraper.
+    alias ytdl="youtube-dl"
+  # alias ytdl="yes | pytube3 $1 -a -f -t='$XDG_CONFIG_HOME/symlinks/dl'"
+
+# }}}
+# ╭───────────────────────────────────────────────────────────────────────────╮
+# │ Various                                                                   │
+# ╰───────────────────────────────────────────────────────────────────────────╯
+# Configure `git` version control system.                                   {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Define shorter `git` command -> mapped to `g`
     alias g="git"
@@ -251,109 +415,10 @@
 #   Define shorter `git push` command.
     alias gp="git push --recurse-submodules=on-demand"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Brew (on macOS)                                                           │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-#   NOTE: Shortcuts are inactive at the moment.
-
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        :  # Do nothing.
-
-        # alias bs="brew search"
-        # alias bt="brew tap"
-        # alias bi="brew install"
-        # alias bci="brew install --cask"  
-        # alias bu="brew uninstall"
-        # alias buu="brew update && brew upgrade"
-    fi
-
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ PacMan & Yay (on Arch Linux)                                              │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-#   NOTE: Shortcuts are inactive at the moment.
-
-    if [[ "$OSTYPE" == "linux"* ]]; then
-        : # Do nothing
-    fi
-
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Rust & Cargo                                                              │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-
-#   Re-define shorter cargo commands.
-    alias cgn="clear && cargo new"
-    alias cgr="clear && cargo run"
-    alias cgd="clear && cargo doc"
-    alias cgb="clear && cargo build"
-    alias cgc="clear && cargo check"
-    alias cgt="clear && cargo test"
-    alias cgi="clear && cargo install"
-
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Python & PIP                                                              │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-
-#   Make sure that Python version 3.x is used. Don't use version 2.x.
-    alias python="python3"
-    alias pip="pip3"
-
-#   Define a shorter command for starting the Python interpreter.
-    alias py3="python"
-    alias py="py3"
-
-#   Define a shorter command for starting Jupyter Notebooks.
-    alias jn="jupyter notebook"
-
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Julia                                                                     │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-
-#   Define a shorter command for starting the Julia interpreter.
-    alias jl="julia"
-
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ NodeJS & NPM                                                              │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-
-#   Define a shorter command for installing NodeJS packages via NPM.
-    alias npmi="npm install"
-
-#   Define a shorter command for updating NPM packages.
-    alias npmu="npm install npm@latest -g"
-
-#   Define a shorter command for running NPM builds.
-    alias npmrb="npm run build"
-
-#   Define a shorter command for creating a new React web-app using NPX.
-  # alias npxcra="npx create-react-app"                            # (inactive)
-
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Web-Scrapers                                                              │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-
-#   Re-define `wget` command to use custom history-file.
-    alias wget="wget --hsts-file \"$XDG_CACHE_HOME/wget/wget-hsts\""
-
-#   Define shorter `web_search` command.
-#   NOTE: See `../zsh/zprofile` for search-engine definitions.
-    alias web="web_search"
-#   TODO Think re: Create a separate `zsh_aliasrc`?
-
-#   Define shortcut to youtube scraper.
-    alias ytdl="youtube-dl"
-  # alias ytdl="yes | pytube3 $1 -a -f -t='$XDG_CONFIG_HOME/symlinks/dl'"
-
-#   Define shortcut to instagram scraper.
-    alias instadl="instaloader\
-        --stories\
-        --highlights\
-        --igtv\
-        --no-captions\
-        --login vincent.mader"
-
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Browser: QuteBrowser                                                      │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Configure `qutebrowser`.                                                  {{{
+# ═════════════════════════════════════════════════════════════════════════════
+# TODO: Only do this when it's installed.
 
 #   Increase browser performance.
     alias qutebrowser="qutebrowser\
@@ -362,9 +427,25 @@
         --qt-flag enable-native-gpu-memory-buffers\
         --qt-flag num-raster-threads=4"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Rust alternatives to commonly used CLI tools                              │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Configure disk utilies.                                                   {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+
+#       Configure macOS `diskutil` command to clear screen before printing.
+        alias diskutil="clear && diskutil"
+
+    elif [[ "$OSTYPE" == "linux"* ]]; then
+
+#       Configure Linux' `fdisk` command to clear screen before printing.
+        alias fdisk="clear && fdisk"
+
+    fi
+
+# }}}
+# Define aliases for nice CLI tools written in Rust.                        {{{
+# ═════════════════════════════════════════════════════════════════════════════
 #   NOTE: See also `exa`, `zoxide`, & `sd`.
 
 #   RIP grep.
@@ -381,32 +462,24 @@
 #   Show disk usage.
     alias du="clear && dust"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Disk utilities                                                    │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Unsorted                                                                  {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
-    if [[ "$OSTYPE" == "darwin"* ]]; then
+#   Power down this computer.
+    alias bye="sudo shutdown now"
 
-#       Configure macOS `diskutil` command to clear screen before printing.
-        alias diskutil="clear && diskutil"
-
-    elif [[ "$OSTYPE" == "linux"* ]]; then
-
-#       Configure Linux' `fdisk` command to clear screen before printing.
-        alias fdisk="clear && fdisk"
-
-    fi
+#   Re-map `del` command to recursive `rmtrash`.
+  # alias del="rmtrash -r"                                           (unused)
+  # alias rm="echo \"'rm' has been deactivated. use 'del' instead!\""
 
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Other useful CLI tools                                                    │
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
+
 #   Re-define `make` command to not echo executed commands.
     alias make="make -s"
-
-#   Define shorter command for `ranger`.
-    alias r="ranger"
-#   TODO: Decide re: Switch to `lf` or `nnn` instead?
 
 #   Activate color-support for `gotop` activity-monitor.
     alias gotop="gotop --color=monokai"
@@ -451,7 +524,7 @@
 #   Show nr. of lines of code grouped by programming/mark-up language.
     alias tokei="clear && echo && tokei"
 
-# Inspirations
+# Inspirations:
 # - cowsay
 # - cowthink
 # - figlet
@@ -512,6 +585,10 @@
       # alias wifi="iwctl station wlan0 disconnect; iwctl station wlan0 get-networks; iwctl station wlan0 connect Pingeling"
 
     fi
+
+# }}}
+#  Unused                                                                   {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
   # alias pdfl="pdflatex"
   # alias speedtest="speedtest-cli"
@@ -651,3 +728,5 @@
     #     local server="$1"
     #     java -Xmx1024M -Xms1024M -jar $server nogui
     # }
+    #
+# }}}
