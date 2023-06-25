@@ -3,9 +3,8 @@
 # ║                      $XDG_CONFIG_HOME/shell/profile                       ║
 # ╚═══════════════════════════════════════════════════════════════════════════╝
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ XDG Base Directories                                                      │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# XDG Base Directories                                                      {{{
+# ═════════════════════════════════════════════════════════════════════════════
 #   For more XDG variables, see here: 
 #   -> specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
@@ -14,9 +13,9 @@
     export XDG_CACHE_HOME="$HOME/.cache"
     export XDG_STATE_HOME="" 
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Locale Setup                                                              │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Locale Setup                                                              {{{
+# ═════════════════════════════════════════════════════════════════════════════
 #   These variables tell the OS how to display/output certain kinds of text. 
 #   To see the current configuration, execute `locale` in your shell. There are 
 #   several different locale categories, which are looked up by the system in 
@@ -25,9 +24,9 @@
 #   Default all locale settings to UTF-8 American English. 
     export LC_ALL="en_US.UTF-8"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Shell History                                                             │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Shell History                                                             {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Define path to shell-command history file.
     export HISTFILE="$XDG_CACHE_HOME/shell/history"
@@ -38,9 +37,10 @@
 #   This disables the creation of the `.zsh_sessions` file -> Cleaner home.
     export SHELL_SESSIONS_DISABLE=1
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Editor & Visual (vi/vim/neovim/neovide)                                   │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Editor & Visual (vi/vim/neovim/neovide)                                   {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
 #   If you invoke an editor via your shell, it will first try `$VISUAL`, and if
 #   that fails, it tries `$EDITOR`. One could e.g. set `$VISUAL` to VSCode, and
 #   `$EDITOR` to vi. Since I'm using vi anyways, both variables are the same.
@@ -65,30 +65,32 @@
 #   Define path to neovim configuration file (init.vim).
   # export NVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Emacs Doom                                                                │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Emacs, Doom, & Org-Mode                                                   {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Add `.emacs.d/bin` to `$PATH` for easier usage of `doom` command.
     export PATH="$PATH:$HOME/.emacs.d/bin"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Browser                                                                   │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+    export ORG_HOME="$HOME/org"
+
+# }}}
+# Browser                                                                   {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   TODO Look-up re: How to set Safari as default browser via env-var on macOS?
 #   export BROWSER="safari"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Rust & Cargo                                                              │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Rust & Cargo                                                              {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
     export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
     export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Python                                                                    │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Python                                                                    {{{
+# ═════════════════════════════════════════════════════════════════════════════
 #   NOTE: Switching the order of definition for the variables
 #         $IPYTHONDIR & $JUPYTER_CONFIG_DIR weirdly seems to lead to 
 #         an error on `jupyter notebook` execution.
@@ -99,42 +101,42 @@
     export IPYTHONDIR="$XDG_DATA_HOME/ipython"
     export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Julia                                                                     │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Julia                                                                     {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
     export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
-    
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ JavaScript, NodeJS, & NPM                                                 │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+
+# }}}
+# JavaScript, NodeJS, & NPM                                                 {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
     export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
     export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
     export NODE_REPL_HISTORY_SIZE=10000000
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Go                                                                        │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Go                                                                        {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
     export GOPATH="$XDG_CACHE_HOME/go"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Exa                                                                       │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Exa                                                                       {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Increase the spacing between icon & file-name in exa.
     export EXA_ICON_SPACING="2"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Bat                                                                       │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Bat                                                                       {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
     export BAT_THEME="Solarized (dark)"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ FuzzyFind                                                                 │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# FuzzyFind                                                                 {{{
+# ═════════════════════════════════════════════════════════════════════════════
 #   TODO Look-up/Decide re: Prefer `fd` over `rg`.
 
 #   Determine search program for `fzf`.
@@ -148,9 +150,9 @@
         # export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules/*,.git/*,target/*,*.pyc,__pycache__/*}"'
     fi
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Databases (MySQL & PostgreSQL)                                            │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Databases (MySQL & PostgreSQL)                                            {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Setup databases on macOS.                                TODO Finish setup.
 #   ───────────────────────────────────────────────────────────────────────────
@@ -183,41 +185,41 @@
 
     fi
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Docker                                                                    │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Docker                                                                    {{{
+# ═════════════════════════════════════════════════════════════════════════════
 #   NOTE: the files created in the directory defined by $DOCKER_"CONFIG" 
 #         look a lot more like cache/data files than config to me...
 
 #   Define path to directory containing docker configuration files.
     export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ GPG                                                                       │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# GPG                                                                       {{{
+# ═════════════════════════════════════════════════════════════════════════════
 #   TODO: Complete GPG setup.
 
 #   Define path to GPG data files.
     export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Less                                                                      │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Less                                                                      {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
     export LESSHISTFILE=- # Deactivate logging.
     # export LESSHISTFILE="$HOME/.local/share/less/lesshst"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ CocoaPods                                                                 │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# CocoaPods                                                                 {{{
+# ═════════════════════════════════════════════════════════════════════════════
 #   TODO: find out: is $XDG_CACHE_HOME the right place? $XDG_DATA_HOME instead?
 
 #   Setup cocoapods repos & cache to not be saved in ~/.cocoapods
     export CP_HOME_DIR="$XDG_CACHE_HOME/cocoapods"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Printers                                                                  │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Printers                                                                  {{{
+# ═════════════════════════════════════════════════════════════════════════════
 #   Make sure that the file `~/.cups/lpoptions` is not be generated anymore.
 #   See `https://www.cups.org/doc/man-cups.html` for more info.
 #   -> TODO: Check whether the above works.
@@ -225,36 +227,9 @@
     export CUPS_CACHEDIR="$XDG_CACHE_HOME/cups"
     export CUPS_DATADIR="$XDG_DATA_HOME/cups"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Various                                                                   │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-
-#   Define path to user's custom symlinks.
-    export CDPATH=".:$XDG_CONFIG_HOME/symlinks"
-
-#   TODO ... (description)
-    export PATH="$PATH:$HOME/.local/bin"  
-#                         ^ added when installing virtualenv       TODO needed?
-
-#   TODO ... (description)
-    export PATH="$PATH:$CARGO_HOME/bin"            # <- all...
-  # . "/Users/vinc/.cache/cargo/env"               # <- ...
-  # source $HOME/.cargo/env                        # <- ...
-  # source $HOME/.cargo/bin                        # <- ...
-  # source "/Users/vinc/.cache/cargo/env"          # <- ...needed?
-
-#   TODO ... (description)
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        eval $(/opt/homebrew/bin/brew shellenv)    # needed for brew
-        export PATH=$PATH:/opt/local/bin           # needed for macports
-    elif [[ "$OSTYPE" == "linux"* ]]; then
-        export XINITRC="$XDG_CONFIG_HOME/x/.xinitrc"
-    fi
-
-#   Setup LaTeX (not working)
-  # if [ "$OS" = "macOS" ]; then
-  #     PATH=/usr/local/texlive/2019/bin/x86_64-darwin:"${PATH}"
-  # fi
+# }}}
+# Exa                                                                       {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 #   Define default exa flags.
 #   1. Show icons.
@@ -314,24 +289,51 @@
 #         ||\
 #         ||\
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ TaskWarrior (inactive)                                                    │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# TaskWarrior (inactive)                                                    {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
   # export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
   # export TIMEWARRIORDB="$HOME/gtd/timewarrior"
   # export WIKI="~/"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ TMUX                                                                      │
-# ╰───────────────────────────────────────────────────────────────────────────╯
+# }}}
+# Various                                                                   {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define path to user's custom symlinks.
+    export CDPATH=".:$XDG_CONFIG_HOME/symlinks"
+
+#   TODO ... (description)
+    export PATH="$PATH:$HOME/.local/bin"  
+#                         ^ added when installing virtualenv       TODO needed?
+
+#   TODO ... (description)
+    export PATH="$PATH:$CARGO_HOME/bin"            # <- all...
+  # . "/Users/vinc/.cache/cargo/env"               # <- ...
+  # source $HOME/.cargo/env                        # <- ...
+  # source $HOME/.cargo/bin                        # <- ...
+  # source "/Users/vinc/.cache/cargo/env"          # <- ...needed?
+
+#   TODO ... (description)
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        eval $(/opt/homebrew/bin/brew shellenv)    # needed for brew
+        export PATH=$PATH:/opt/local/bin           # needed for macports
+    elif [[ "$OSTYPE" == "linux"* ]]; then
+        export XINITRC="$XDG_CONFIG_HOME/x/.xinitrc"
+    fi
+
+#   Setup LaTeX (not working)
+  # if [ "$OS" = "macOS" ]; then
+  #     PATH=/usr/local/texlive/2019/bin/x86_64-darwin:"${PATH}"
+  # fi
+
+# }}}
+# TMUX                                                                      {{{
+# ═════════════════════════════════════════════════════════════════════════════
 # TODO Move to shellrc / zshrc ?!
 
 #   Source TMUX config.
     tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
 
-# ╭───────────────────────────────────────────────────────────────────────────╮
-# │ Emacs Org-Mode Home Directory                                             │
-# ╰───────────────────────────────────────────────────────────────────────────╯
-
-    export ORG_HOME="~/org"
+# }}}
