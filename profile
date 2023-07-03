@@ -236,59 +236,6 @@
 #   2. Group directories first.
     export EXA_FLAGS="--icons --group-directories-first"
 
-#   Define list of filenames to ignore in listing.
-#   - NOTE: Be careful to remember the escape-symbols at the end of the line.
-    export EXA_IGNORE="\
-        |*.pyc|\
-        |*.pyo|\
-        |.CFUserTextEncoding|\
-        |.DS_Store|\
-        |.archey-ip|\
-        |.chatgpt|\
-        |.cups|\
-        |.dartServer|\
-        |.dart|\
-        |.docker|\
-        |.dockerignore|\
-        |.doom.d|\
-        |.emacs.d|\
-        |.flutter-devtools|\
-        |.flutter|\
-        |.gem|\
-        |.git-credentials|\
-        |.gitignore|\
-        |.git|\
-        |.ipynb_checkpoints|\
-        |.mono|\
-        |.ob-jupyter|\
-        |.pub-cache|\
-        |.putty|\
-        |.ssh|\
-        |.swiftpm|\
-        |.terminfo|\
-        |.thumbnails|\
-        |.viminfo|\
-        |Cargo.lock|\
-        |__pycache__|\
-        |desktop.ini|\
-        |dist|\
-        |env|\
-        |node_modules|\
-        |pkg|\
-        |target|\
-        |venv|\
-        |.venv|\
-        |.pdbhistory|\
-        |.python_history|\
-        |.zsh_history|\
-        |kees_solvers|\
-        "
-
-        # |~/.config/*|\  -> only works on relogin (I guess?)
-#         ||\
-#         ||\
-#         ||\
-
 # }}}
 # TaskWarrior (inactive)                                                    {{{
 # ═════════════════════════════════════════════════════════════════════════════
