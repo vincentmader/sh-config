@@ -63,6 +63,7 @@
         |.gitignore|\
         |.git|\
         |.ipynb_checkpoints|\
+        |.matplotlib|\
         |.mono|\
         |.ob-jupyter|\
         |.pub-cache|\
@@ -72,6 +73,7 @@
         |.terminfo|\
         |.thumbnails|\
         |.viminfo|\
+        |.zsh_sessions|\
         |Cargo.lock|\
         |__pycache__|\
         |desktop.ini|\
