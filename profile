@@ -73,6 +73,8 @@
     export PATH="$PATH:$HOME/.emacs.d/bin"
 
     export ORG_HOME="$HOME/org"
+    export EMACS_CONF="$XDG_CONFIG_HOME/emacs"
+    export DOOM_CONF="$XDG_CONFIG_HOME/emacs-doom"
 
 # }}}
 # Browser                                                                   {{{
@@ -127,6 +129,11 @@
 
 #   Increase the spacing between icon & file-name in exa.
     export EXA_ICON_SPACING="2"
+
+#   Define default exa flags.
+#   1. Show icons.
+#   2. Group directories first.
+    export EXA_FLAGS="--icons --group-directories-first"
 
 # }}}
 # Bat                                                                       {{{
@@ -218,6 +225,13 @@
     export CP_HOME_DIR="$XDG_CACHE_HOME/cocoapods"
 
 # }}}
+# Starship                                                                  {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+    export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
+
+# }}}
 # Printers                                                                  {{{
 # ═════════════════════════════════════════════════════════════════════════════
 #   Make sure that the file `~/.cups/lpoptions` is not be generated anymore.
@@ -226,15 +240,6 @@
 
     export CUPS_CACHEDIR="$XDG_CACHE_HOME/cups"
     export CUPS_DATADIR="$XDG_DATA_HOME/cups"
-
-# }}}
-# Exa                                                                       {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-#   Define default exa flags.
-#   1. Show icons.
-#   2. Group directories first.
-    export EXA_FLAGS="--icons --group-directories-first"
 
 # }}}
 # TaskWarrior (inactive)                                                    {{{
