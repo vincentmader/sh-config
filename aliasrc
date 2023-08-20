@@ -43,8 +43,13 @@
 #   Define list of filenames to ignore in listing.
 #   - NOTE: Be careful to remember the escape-symbols at the end of the line.
     export EXA_IGNORE="\
+        |*.aux|\
+        |*.fdb_latexmk|\
+        |*.fls|\
+        |*.log|\
         |*.pyc|\
         |*.pyo|\
+        |*.synctex.gz|\
         |.CFUserTextEncoding|\
         |.DS_Store|\
         |.archey-ip|\
