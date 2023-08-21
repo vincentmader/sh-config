@@ -44,11 +44,19 @@
 #   - NOTE: Be careful to remember the escape-symbols at the end of the line.
     export EXA_IGNORE="\
         |*.aux|\
+        |*.bbl|\
+        |*.bcf|\
+        |*.blg|\
         |*.fdb_latexmk|\
         |*.fls|\
         |*.log|\
+        |*.lof|\
+        |*.lot|\
+        |*.out|\
         |*.pyc|\
         |*.pyo|\
+        |*.run.xml|\
+        |*.toc|\
         |*.synctex.gz|\
         |.CFUserTextEncoding|\
         |.DS_Store|\
