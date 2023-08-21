@@ -291,6 +291,8 @@
           nvim +"Telescope find_files"
           # nvim +"call GoyoTelescope()"
           # nvim $@
+        elif [ -d "$1" ]; then
+          nvim +"Telescope find_files cwd=$1"
         else
             nvim $@
             # nvim $@ +"Goyo"
