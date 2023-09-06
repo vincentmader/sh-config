@@ -101,7 +101,6 @@
         |.venv|\
         |.zsh_history|\
         |venv|\
-        |kees_solvers|\
         "
 
         # |~/.config/*|\  -> only works on relogin (I guess?)
