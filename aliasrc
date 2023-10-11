@@ -1,4 +1,3 @@
-#/bin/sh
 # ╔═══════════════════════════════════════════════════════════════════════════╗
 # ║                       $XDG_CONFIG_HOME/shell/aliasrc                      ║
 # ╚═══════════════════════════════════════════════════════════════════════════╝
@@ -49,24 +48,27 @@
         |*.blg|\
         |*.fdb_latexmk|\
         |*.fls|\
-        |*.log|\
         |*.lof|\
+        |*.log|\
         |*.lot|\
         |*.out|\
         |*.pyc|\
         |*.pyo|\
         |*.run.xml|\
-        |*.toc|\
         |*.synctex.gz|\
+        |*.toc|\
         |.CFUserTextEncoding|\
         |.DS_Store|\
+        |.Trash|\
+        |._*|\
         |.archey-ip|\
         |.chatgpt|\
         |.cups|\
+        |.dart-tool|\
         |.dartServer|\
         |.dart|\
-        |.docker|\
         |.dockerignore|\
+        |.docker|\
         |.doom.d|\
         |.emacs.d|\
         |.flutter-devtools|\
@@ -79,13 +81,17 @@
         |.matplotlib|\
         |.mono|\
         |.ob-jupyter|\
+        |.pdbhistory|\
         |.pub-cache|\
         |.putty|\
+        |.python_history|\
         |.ssh|\
         |.swiftpm|\
         |.terminfo|\
         |.thumbnails|\
+        |.venv|\
         |.viminfo|\
+        |.zsh_history|\
         |.zsh_sessions|\
         |Cargo.lock|\
         |__pycache__|\
@@ -95,11 +101,6 @@
         |node_modules|\
         |pkg|\
         |target|\
-        |._*|\
-        |.pdbhistory|\
-        |.python_history|\
-        |.venv|\
-        |.zsh_history|\
         |venv|\
         "
 
