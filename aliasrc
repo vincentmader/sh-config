@@ -122,8 +122,8 @@
 #   ───────────────────────────────────────────────────────────────────────────
   
 #   Display longer list view.                                     (-l = --long)
-    alias ll="ls -l --header --git"
-    alias lla="lsa -l --header --git"
+    alias ll="ls -l --octal-permissions --header --git"
+    alias lla="lsa -l --octal-permissions --header --git"
 
 #   Show nested tree-view using `exa`.
 #   ───────────────────────────────────────────────────────────────────────────
