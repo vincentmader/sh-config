@@ -38,6 +38,13 @@
     export SHELL_SESSIONS_DISABLE=1
 
 # }}}
+# Browser                                                                   {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   TODO Look-up re: How to set Safari as default browser via env-var on macOS?
+#   export BROWSER="safari"
+
+# }}}
 # Editor & Visual (vi/vim/neovim/neovide)                                   {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
@@ -66,6 +73,32 @@
   # export NVIMRC="$XDG_CONFIG_HOME/nvim/init.lua"
 
 # }}}
+
+# ═════════════════════════════════════════════════════════════════════════════
+
+# Bat                                                                       {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    export BAT_THEME="Solarized (dark)"
+
+# }}}
+# CocoaPods                                                                 {{{
+# ═════════════════════════════════════════════════════════════════════════════
+#   TODO: find out: is $XDG_CACHE_HOME the right place? $XDG_DATA_HOME instead?
+
+#   Setup cocoapods repos & cache to not be saved in ~/.cocoapods
+    export CP_HOME_DIR="$XDG_CACHE_HOME/cocoapods"
+
+# }}}
+# Docker                                                                    {{{
+# ═════════════════════════════════════════════════════════════════════════════
+#   NOTE: the files created in the directory defined by $DOCKER_"CONFIG" 
+#         look a lot more like cache/data files than config to me...
+
+#   Define path to directory containing docker configuration files.
+    export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+
+# }}}
 # Emacs, Doom, & Org-Mode                                                   {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
@@ -75,53 +108,6 @@
     export ORG_HOME="$HOME/org"
     export EMACS_CONF="$XDG_CONFIG_HOME/emacs"
     export DOOM_CONF="$XDG_CONFIG_HOME/emacs-doom"
-
-# }}}
-# Browser                                                                   {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-#   TODO Look-up re: How to set Safari as default browser via env-var on macOS?
-#   export BROWSER="safari"
-
-# }}}
-# Rust & Cargo                                                              {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-    export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-    export CARGO_HOME="$XDG_DATA_HOME/cargo"
-
-# }}}
-# Python                                                                    {{{
-# ═════════════════════════════════════════════════════════════════════════════
-#   NOTE: Switching the order of definition for the variables
-#         $IPYTHONDIR & $JUPYTER_CONFIG_DIR weirdly seems to lead to 
-#         an error on `jupyter notebook` execution.
-
-    export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/.pythonrc"
-    export MPLCONFIGDIR="$XDG_CONFIG_HOME/matplotlib"
-    export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-    export IPYTHONDIR="$XDG_DATA_HOME/ipython"
-    export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
-
-# }}}
-# Julia                                                                     {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-    export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
-
-# }}}
-# JavaScript, NodeJS, & NPM                                                 {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-    export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-    export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
-    export NODE_REPL_HISTORY_SIZE=10000000
-
-# }}}
-# Go                                                                        {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-    export GOPATH="$XDG_CACHE_HOME/go"
 
 # }}}
 # Exa                                                                       {{{
@@ -134,12 +120,6 @@
 #   1. Show icons.
 #   2. Group directories first.
     export EXA_FLAGS="--icons --group-directories-first"
-
-# }}}
-# Bat                                                                       {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-    export BAT_THEME="Solarized (dark)"
 
 # }}}
 # FuzzyFind                                                                 {{{
@@ -158,6 +138,87 @@
     fi
 
 # }}}
+# Go                                                                        {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    export GOPATH="$XDG_CACHE_HOME/go"
+
+# }}}
+# GPG                                                                       {{{
+# ═════════════════════════════════════════════════════════════════════════════
+#   TODO: Complete GPG setup.
+
+#   Define path to GPG data files.
+    export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+# }}}
+# JavaScript, NodeJS, & NPM                                                 {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+    export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
+    export NODE_REPL_HISTORY_SIZE=10000000
+
+# }}}
+# Julia                                                                     {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
+
+# }}}
+# Less                                                                      {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    export LESSHISTFILE=- # Deactivate logging.
+    # export LESSHISTFILE="$HOME/.local/share/less/lesshst"
+
+# }}}
+# Python                                                                    {{{
+# ═════════════════════════════════════════════════════════════════════════════
+#   NOTE: Switching the order of definition for the variables
+#         $IPYTHONDIR & $JUPYTER_CONFIG_DIR weirdly seems to lead to 
+#         an error on `jupyter notebook` execution.
+
+    export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/.pythonrc"
+    export MPLCONFIGDIR="$XDG_CONFIG_HOME/matplotlib"
+    export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+    export IPYTHONDIR="$XDG_DATA_HOME/ipython"
+    export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
+
+# }}}
+# Rust & Cargo                                                              {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+    export CARGO_HOME="$XDG_DATA_HOME/cargo"
+
+# }}}
+# Starship                                                                  {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+    export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+    export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
+
+# }}}
+# TaskWarrior (inactive)                                                    {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+  # export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
+  # export TIMEWARRIORDB="$HOME/gtd/timewarrior"
+  # export WIKI="~/"
+
+# }}}
+# TMUX                                                                      {{{
+# ═════════════════════════════════════════════════════════════════════════════
+# TODO Move to shellrc / zshrc ?!
+
+#   Source TMUX config.
+    tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
+
+# }}}
+
+# ═════════════════════════════════════════════════════════════════════════════
+
 # Databases (MySQL & PostgreSQL)                                            {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
@@ -193,45 +254,6 @@
     fi
 
 # }}}
-# Docker                                                                    {{{
-# ═════════════════════════════════════════════════════════════════════════════
-#   NOTE: the files created in the directory defined by $DOCKER_"CONFIG" 
-#         look a lot more like cache/data files than config to me...
-
-#   Define path to directory containing docker configuration files.
-    export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
-
-# }}}
-# GPG                                                                       {{{
-# ═════════════════════════════════════════════════════════════════════════════
-#   TODO: Complete GPG setup.
-
-#   Define path to GPG data files.
-    export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-
-# }}}
-# Less                                                                      {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-    export LESSHISTFILE=- # Deactivate logging.
-    # export LESSHISTFILE="$HOME/.local/share/less/lesshst"
-
-# }}}
-# CocoaPods                                                                 {{{
-# ═════════════════════════════════════════════════════════════════════════════
-#   TODO: find out: is $XDG_CACHE_HOME the right place? $XDG_DATA_HOME instead?
-
-#   Setup cocoapods repos & cache to not be saved in ~/.cocoapods
-    export CP_HOME_DIR="$XDG_CACHE_HOME/cocoapods"
-
-# }}}
-# Starship                                                                  {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-    export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
-    export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
-
-# }}}
 # Printers                                                                  {{{
 # ═════════════════════════════════════════════════════════════════════════════
 #   Make sure that the file `~/.cups/lpoptions` is not be generated anymore.
@@ -240,14 +262,6 @@
 
     export CUPS_CACHEDIR="$XDG_CACHE_HOME/cups"
     export CUPS_DATADIR="$XDG_DATA_HOME/cups"
-
-# }}}
-# TaskWarrior (inactive)                                                    {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-  # export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
-  # export TIMEWARRIORDB="$HOME/gtd/timewarrior"
-  # export WIKI="~/"
 
 # }}}
 # Various                                                                   {{{
@@ -279,13 +293,5 @@
   # if [ "$OS" = "macOS" ]; then
   #     PATH=/usr/local/texlive/2019/bin/x86_64-darwin:"${PATH}"
   # fi
-
-# }}}
-# TMUX                                                                      {{{
-# ═════════════════════════════════════════════════════════════════════════════
-# TODO Move to shellrc / zshrc ?!
-
-#   Source TMUX config.
-    tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
 
 # }}}
