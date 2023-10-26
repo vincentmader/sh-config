@@ -152,9 +152,6 @@
     alias ltt3="ltt -L 3"
     alias ltt5="ltt -L 5"
     alias ltt4="ltt -L 4"
-   
-
-
 
 # }}}
 # Configure `ranger`.                                                       {{{
