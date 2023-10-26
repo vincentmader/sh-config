@@ -105,9 +105,12 @@
 #   Add `.emacs.d/bin` to `$PATH` for easier usage of `doom` command.
     export PATH="$PATH:$HOME/.emacs.d/bin"
 
-    export ORG_HOME="$HOME/org"
+#   Define paths to config directories for Emacs & Doom.
     export EMACS_CONF="$XDG_CONFIG_HOME/emacs"
     export DOOM_CONF="$XDG_CONFIG_HOME/emacs-doom"
+
+#   Define path to directory where personal org-files are stored.
+    export ORG_HOME="$HOME/org"
 
 # }}}
 # Exa                                                                       {{{
