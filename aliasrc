@@ -49,7 +49,6 @@
         |*.fdb_latexmk|\
         |*.fls|\
         |*.lof|\
-        |*.log|\
         |*.lot|\
         |*.out|\
         |*.pyc|\
