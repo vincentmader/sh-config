@@ -226,12 +226,12 @@
 # Configure `rmdir`. {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
-  function rmdir_clean() {
-    dir="$1"
-    rm "$dir/.DS_Store" 2> /dev/null
-    rmdir "$dir"
-  }
-  alias rmdir="rmdir_clean"
+  # function rmdir_clean() {
+  #   dir="$1"
+  #   rm "$dir/.DS_Store" 2> /dev/null
+  #   rmdir "$dir"
+  # }
+  # alias rmdir="rmdir_clean"
 
 # }}}
 # Configure `touch`.                                                        {{{
