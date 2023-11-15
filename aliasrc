@@ -51,9 +51,11 @@
         |*.lof|\
         |*.lot|\
         |*.out|\
+        |*.nav|\
         |*.pyc|\
         |*.pyo|\
         |*.run.xml|\
+        |*.snm|\
         |*.synctex.gz|\
         |*.toc|\
         |.CFUserTextEncoding|\
