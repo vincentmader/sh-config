@@ -593,6 +593,9 @@
 #   Show nr. of lines of code grouped by programming/mark-up language.
     alias tokei="clear && echo && tokei"
 
+#   Send ping to `google.com` for testing internet connection.
+    alias pingo="ping google.com"
+
 # Inspirations:
 # - cowsay
 # - cowthink
