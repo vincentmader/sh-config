@@ -79,6 +79,7 @@
         |.gitignore|\
         |.git|\
         |.ipynb_checkpoints|\
+        |.localized|\
         |.matplotlib|\
         |.mono|\
         |.ob-jupyter|\
@@ -92,6 +93,7 @@
         |.thumbnails|\
         |.venv|\
         |.viminfo|\
+        |.vscode|\
         |.zsh_history|\
         |.zsh_sessions|\
         |Cargo.lock|\
