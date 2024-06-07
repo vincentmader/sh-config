@@ -37,7 +37,8 @@
 #   - Add an empty line, then print the present working directory.
 #   - Add another empty line,
 #   - Tell `exa` to use the flags defined above, & finally show the listing. 
-    alias exa="clear && pwd && echo && exa $EXA_FLAGS"
+    # alias pwd_gray="echo -e '\e[1;92m $(pwd) \e[0m'"
+    alias exa="clear && echo && pwd && echo && exa $EXA_FLAGS"
 
 #   Define list of filenames to ignore in listing.
 #   - NOTE: Be careful to remember the escape-symbols at the end of the line.
@@ -104,7 +105,6 @@
         |node_modules|\
         |pkg|\
         |target|\
-        |venv|\
         "
 
         # |~/.config/*|\  -> only works on relogin (I guess?)
@@ -299,8 +299,11 @@
         fi
     }
     alias nvim="nvim_func"
+    # alias nvim="nvim @"
 
 #   Define shorter `nvim` command.
+#   alias vi="nvim"
+#   alias v="hx"
     alias v="nvim"
 
 # }}}
@@ -723,7 +726,7 @@
 
 # taskwarrior / timewarrior
 # -----------------------------------------------------------------------------
-    # alias t="clear && task"
+    alias task="clear && task"
     # alias tn="t next limit:30"
     # alias ts="t short"
     # # tp () {t project:$1}
@@ -804,3 +807,22 @@
     # }
     #
 # }}}
+
+# GitHub Copilot CLI {{{
+
+    # alias copilot='gh copilot' 
+    # alias gcs='gh copilot suggest' 
+    # alias gce='gh copilot explain' 
+
+# }}}
+
+readme_help() {
+    if [ -f README.md ]; then 
+        cat README.md
+    elif [ -f README.org ]; then 
+        cat README.org
+    fi
+}
+alias h="$(readme_help)"
+
+alias org="/Users/vinc/org/project/all/develop_app_dewit/versions/2024-05-27\ v7\ din-server/din-cli/target/debug/din-cli"
