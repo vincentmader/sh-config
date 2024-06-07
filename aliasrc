@@ -115,13 +115,12 @@
 
 readme_help() {
     if [ -f README.md ]; then 
-        cat README.md
+        bat README.md
     elif [ -f README.org ]; then 
-        cat README.org
+        bat README.org
     fi
 }
-
-alias h="$(readme_help)"
+alias h="clear && readme_help"
 
 # }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
