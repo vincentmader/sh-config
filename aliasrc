@@ -10,107 +10,52 @@
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Source zsh configuration.
-    alias sozsh="source \"$XDG_CONFIG_HOME/zsh/zshrc\""
-
-# }}}
-# Define shortcuts for very commonly used commands.                         {{{
-# ═════════════════════════════════════════════════════════════════════════════
-
-#   Re-define `pwd` command to print actual path without symbolic links.
-    alias pwd="pwd -P"
-
-#   Define shorter `clear` command.
-    alias c="clear"
+    alias source_zsh_config="source \"$XDG_CONFIG_HOME/zsh/zshrc\""
 
 # }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
 # │ Directory Listing                                                         │
 # ╰───────────────────────────────────────────────────────────────────────────╯
+# Clear screen.                                                             {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define shorter `clear` command.
+    alias c="clear"
+
+# }}}
+# Show present working directory.                                           {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Re-define `pwd` command to print actual path without symbolic links.
+    alias pwd="pwd -P"
+
+# }}}
 # Configure `exa`.                                                          {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
-#   Basic setup of `exa`
+#   Define list of filenames to ignore in listing.
 #   ───────────────────────────────────────────────────────────────────────────
+#   NOTE: Be careful to remember the escape-symbols at the end of the line.
+    export EXA_IGNORE="\
+        |*.aux|*.bbl|*.bcf|*.blg|*.fdb_latexmk|*.fls|*.lof|*.lot|*.out|*.nav|*.pyc|*.pyo|\
+        |*.run.xml|*.snm|*.synctex.gz|*.toc|.CFUserTextEncoding|.DS_Store|.Trash|._*|\
+        |.archey-ip|.chatgpt|.cups|.dart-tool|.dartServer|.dart|.dockerignore|.docker|\
+        |.doom.d|.emacs.d|.flutter-devtools|.flutter|.gem|.git-credentials|.gitignore|.git|\
+        |.ipynb_checkpoints|.localized|.matplotlib|.mono|.ob-jupyter|.pdbhistory|.pub-cache|\
+        |.putty|.python_history|.ssh|.swiftpm|.terminfo|.thumbnails|.venv|.viminfo|.vscode|\
+        |.zsh_history|.zsh_sessions|Cargo.lock|__pycache__|desktop.ini|dist|env|node_modules|\
+        |pkg|target|\
+        "
+#   NOTE: |~/.config/*|\  -> only works on relogin (I guess?)
 
 #   Re-define `exa` command for prettier displaying.
-#   - Clear screen before showing listing.
-#   - Add an empty line, then print the present working directory.
-#   - Add another empty line,
-#   - Tell `exa` to use the flags defined above, & finally show the listing. 
-    # alias pwd_gray="echo -e '\e[1;92m $(pwd) \e[0m'"
-    alias exa="clear && echo && pwd && echo && exa $EXA_FLAGS"
-
-#   Define list of filenames to ignore in listing.
-#   - NOTE: Be careful to remember the escape-symbols at the end of the line.
-    export EXA_IGNORE="\
-        |*.aux|\
-        |*.bbl|\
-        |*.bcf|\
-        |*.blg|\
-        |*.fdb_latexmk|\
-        |*.fls|\
-        |*.lof|\
-        |*.lot|\
-        |*.out|\
-        |*.nav|\
-        |*.pyc|\
-        |*.pyo|\
-        |*.run.xml|\
-        |*.snm|\
-        |*.synctex.gz|\
-        |*.toc|\
-        |.CFUserTextEncoding|\
-        |.DS_Store|\
-        |.Trash|\
-        |._*|\
-        |.archey-ip|\
-        |.chatgpt|\
-        |.cups|\
-        |.dart-tool|\
-        |.dartServer|\
-        |.dart|\
-        |.dockerignore|\
-        |.docker|\
-        |.doom.d|\
-        |.emacs.d|\
-        |.flutter-devtools|\
-        |.flutter|\
-        |.gem|\
-        |.git-credentials|\
-        |.gitignore|\
-        |.git|\
-        |.ipynb_checkpoints|\
-        |.localized|\
-        |.matplotlib|\
-        |.mono|\
-        |.ob-jupyter|\
-        |.pdbhistory|\
-        |.pub-cache|\
-        |.putty|\
-        |.python_history|\
-        |.ssh|\
-        |.swiftpm|\
-        |.terminfo|\
-        |.thumbnails|\
-        |.venv|\
-        |.viminfo|\
-        |.vscode|\
-        |.zsh_history|\
-        |.zsh_sessions|\
-        |Cargo.lock|\
-        |__pycache__|\
-        |desktop.ini|\
-        |dist|\
-        |env|\
-        |node_modules|\
-        |pkg|\
-        |target|\
-        "
-
-        # |~/.config/*|\  -> only works on relogin (I guess?)
-#         ||\
-#         ||\
-#         ||\
+#   ───────────────────────────────────────────────────────────────────────────
+#   + Clear screen before showing listing.
+#   + Add an empty line, then print the present working directory (in gray!).
+#   + Add another empty line,
+#   + Tell `exa` to use the flags defined above, & finally show the listing. 
+    alias pwd_gray="echo -en '\e[1;92m' && pwd && echo -en '\e[0m'"
+    alias exa="clear && echo && pwd_gray && echo && exa $EXA_FLAGS"
 
 #   Re-define `ls` command to ignore the just-defined list of files...
     alias ls="exa -a -I \"$EXA_IGNORE\""
@@ -163,6 +108,20 @@
 #   Define shorter command for `ranger`.
     alias r="ranger"
 #   TODO: Decide re: Switch to `lf` or `nnn` instead?
+
+# }}}
+# Define function `readme_help` aliased to `h`                              {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+readme_help() {
+    if [ -f README.md ]; then 
+        cat README.md
+    elif [ -f README.org ]; then 
+        cat README.org
+    fi
+}
+
+alias h="$(readme_help)"
 
 # }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
@@ -227,7 +186,14 @@
     alias mv="mv -i"
 
 # }}}
-# Configure `rmdir`. {{{
+# Configure `touch`.                                                        {{{
+# ═════════════════════════════════════════════════════════════════════════════
+
+#   Define shorter `touch` command.
+    alias t="touch"
+
+# }}}
+# Configure `rmdir`. [INACTIVE] {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
   # function rmdir_clean() {
@@ -238,11 +204,14 @@
   # alias rmdir="rmdir_clean"
 
 # }}}
-# Configure `touch`.                                                        {{{
+# Define safe function `rmtrash` aliased to `rm`.                           {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
-#   Define shorter `touch` command.
-    alias t="touch"
+rmtrash() {
+    mv "$@" "$HOME/.Trash"
+}
+
+alias rm=rmtrash
 
 # }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
@@ -267,6 +236,8 @@
 
 #   Define shorter `emacsclient` command.
     alias e="emacsclient"
+
+    alias emacsserver="emacs --daemon"
 
 # }}}
 # Configure `vim` & `neovim`.                                               {{{
@@ -302,7 +273,6 @@
     # alias nvim="nvim @"
 
 #   Define shorter `nvim` command.
-#   alias vi="nvim"
 #   alias v="hx"
     alias v="nvim"
 
@@ -807,7 +777,6 @@
     # }
     #
 # }}}
-
 # GitHub Copilot CLI {{{
 
     # alias copilot='gh copilot' 
@@ -815,14 +784,9 @@
     # alias gce='gh copilot explain' 
 
 # }}}
-
-readme_help() {
-    if [ -f README.md ]; then 
-        cat README.md
-    elif [ -f README.org ]; then 
-        cat README.org
-    fi
-}
-alias h="$(readme_help)"
+# Define alias `org` for `din-cli`.                                         {{{
+# ═════════════════════════════════════════════════════════════════════════════
 
 alias org="/Users/vinc/org/project/all/develop_app_dewit/versions/2024-05-27\ v7\ din-server/din-cli/target/debug/din-cli"
+
+# }}}
