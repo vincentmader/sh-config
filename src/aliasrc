@@ -30,7 +30,7 @@
     alias pwd="pwd -P"
 
 # }}}
-# Configure `exa`.                                                          {{{
+# Configure `eza`.                                                          {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Define list of filenames to ignore in listing.
@@ -42,43 +42,44 @@
         |.archey-ip|.chatgpt|.cups|.dart-tool|.dartServer|.dart|.dockerignore|.docker|\
         |.doom.d|.emacs.d|.flutter-devtools|.flutter|.gem|.git-credentials|.gitignore|.git|\
         |.ipynb_checkpoints|.localized|.matplotlib|.mono|.ob-jupyter|.pdbhistory|.pub-cache|\
-        |.putty|.python_history|.ssh|.swiftpm|.terminfo|.thumbnails|.venv|.viminfo|.vscode|\
+        |.putty|.psql_history|.pyenv|.python_history|.slack|.ssh|.swiftpm|.terminfo|.thumbnails|\
+        |.venv|.viminfo|.vscode|\
         |.zsh_history|.zsh_sessions|Cargo.lock|__pycache__|desktop.ini|dist|env|node_modules|\
         |pkg|target|\
         "
 #   NOTE: |~/.config/*|\  -> only works on relogin (I guess?)
 
-#   Re-define `exa` command for prettier displaying.
+#   Re-define `eza` command for prettier displaying.
 #   ───────────────────────────────────────────────────────────────────────────
 #   + Clear screen before showing listing.
 #   + Add an empty line, then print the present working directory (in gray!).
 #   + Add another empty line,
-#   + Tell `exa` to use the flags defined above, & finally show the listing. 
+#   + Tell `eza` to use the flags defined above, & finally show the listing. 
     alias pwd_gray="echo -en '\e[1;92m' && pwd && echo -en '\e[0m'"
-    alias exa="clear && echo && pwd_gray && echo && exa $EXA_FLAGS"
+    alias eza="clear && echo && pwd_gray && echo && eza $EXA_FLAGS"
 
 #   Re-define `ls` command to ignore the just-defined list of files...
-    alias ls="exa -a -I \"$EXA_IGNORE\""
+    alias ls="eza -a -I \"$EXA_IGNORE\""
 #   ...except if running `lsa`.
-    alias lsa="exa -a"
+    alias lsa="eza -a"
  
 #   Show in a prettier way via 1-level-deep tree-view.            (-T = --tree)
     alias l="ls -T --level=1"
     alias la="lsa -T --level=1"
 
-#   Show more-detailed directory listing using `exa`
+#   Show more-detailed directory listing using `eza`
 #   ───────────────────────────────────────────────────────────────────────────
   
 #   Display longer list view.                                     (-l = --long)
     alias ll="ls -l --octal-permissions --header --git"
     alias lla="lsa -l --octal-permissions --header --git"
 
-#   Show nested tree-view using `exa`.
+#   Show nested tree-view using `eza`.
 #   ───────────────────────────────────────────────────────────────────────────
   
 #   Show multi-level tree view.                                   (-T = --tree)
-    alias lt="exa -T $EXA_FLAGS -I \"$EXA_IGNORE\""
-    alias lta="exa -T $EXA_FLAGS"
+    alias lt="eza -T $EXA_FLAGS -I \"$EXA_IGNORE\""
+    alias lta="eza -T $EXA_FLAGS"
     MORE_EXA_IGNORE="\
         $EXA_IGNORE|\
         |Cargo.toml|\
@@ -88,8 +89,8 @@
         |mod.rs|\
         |scripts|\
         "
-    alias ltt="exa -T $EXA_FLAGS -I \"$MORE_EXA_IGNORE\""
-    alias ltta="exa -T $EXA_FLAGS"
+    alias ltt="eza -T $EXA_FLAGS -I \"$MORE_EXA_IGNORE\""
+    alias ltta="eza -T $EXA_FLAGS"
     alias lt1="lt -L 1"
     alias lt2="lt -L 2"
     alias lt3="lt -L 3"
@@ -106,8 +107,10 @@
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Define shorter command for `ranger`.
-    alias r="ranger"
-#   TODO: Decide re: Switch to `lf` or `nnn` instead?
+    # alias r="ranger"
+    alias r="lf"
+#   TODO: Decide re: Switch to `lf` or `nnn` instead? -> `yazi` !
+    alias r="yazi"
 
 # }}}
 # Define function `readme_help` aliased to `h`                              {{{
@@ -118,6 +121,8 @@ readme_help() {
         bat README.md
     elif [ -f README.org ]; then 
         bat README.org
+    else
+        echo "Nobody can help you now..."
     fi
 }
 alias h="clear && readme_help"
@@ -130,7 +135,7 @@ alias h="clear && readme_help"
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Re-define `cd` command to automatically move list the target's contents.
-#   -> NOTE: needs to be defined AFTER above `exa` binds to `l`
+#   -> NOTE: needs to be defined AFTER above `eza` binds to `l`
     function cd() {  
         # builtin cd "$@" && l
         z "$@" && l
@@ -166,7 +171,7 @@ alias h="clear && readme_help"
     alias ln="ln -v"
 
 # }}}
-# Configure `mkdir`. {{{
+# Configure `mkdir` and `rmdir`. {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Re-define `mkdir` / `md` commands to automatically move into target.
@@ -176,6 +181,7 @@ alias h="clear && readme_help"
   # }
   # alias mkdir=func_mkcdir
     alias mkd=mkdir
+    alias rmd=rmdir
 
 # }}}
 # Configure `mv`.                                                           {{{
@@ -206,11 +212,11 @@ alias h="clear && readme_help"
 # Define safe function `rmtrash` aliased to `rm`.                           {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
-rmtrash() {
-    mv "$@" "$HOME/.Trash"
-}
+# rmtrash() {
+#     mv "$@" "$HOME/.Trash"
+# }
 
-alias rm=rmtrash
+# alias rm=rmtrash
 
 # }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
@@ -268,7 +274,7 @@ alias rm=rmtrash
             # nvim $@ +"Goyo"
         fi
     }
-    alias nvim="nvim_func"
+    # alias nvim="nvim_func"
     # alias nvim="nvim @"
 
 #   Define shorter `nvim` command.
@@ -458,6 +464,9 @@ alias rm=rmtrash
 #   Define shorter `git push` command.
     alias gp="git push --recurse-submodules=on-demand"
 
+#   Define shorter `git log` command.
+    alias glg="clear && git log"
+
 # }}}
 # Configure `qutebrowser`.                                                  {{{
 # ═════════════════════════════════════════════════════════════════════════════
@@ -489,7 +498,7 @@ alias rm=rmtrash
 # }}}
 # Define aliases for nice CLI tools written in Rust.                        {{{
 # ═════════════════════════════════════════════════════════════════════════════
-#   NOTE: See also `exa`, `zoxide`, & `sd`.
+#   NOTE: See also `eza`, `zoxide`, & `sd`.
 
 #   RIP grep.
     alias grep="rg"
@@ -500,7 +509,7 @@ alias rm=rmtrash
     alias lc='lolcat'
 
 #   Find.
-    alias find="fd"
+#   alias find="fd"
 
 #   Show disk usage.
     alias du="clear && dust"
@@ -789,3 +798,19 @@ alias rm=rmtrash
 alias org="/Users/vinc/org/project/all/develop_app_dewit/versions/2024-05-27\ v7\ din-server/din-cli/target/debug/din-cli"
 
 # }}}
+
+alias xcp="xcp --gitignore"
+
+
+
+# yazi() {
+#     command yazi "$@"
+#     if [[ -f "$HOME/.yazi-last-dir" ]]; then
+#         cd "$(cat "$HOME/.yazi-last-dir")" || return
+#     fi
+# }
+
+alias m="make"
+alias k="kalc"
+
+#alias zellij="zellij --layout compact"

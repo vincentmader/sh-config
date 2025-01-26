@@ -11,7 +11,7 @@
     export XDG_CONFIG_HOME="$HOME/.config"
     export XDG_DATA_HOME="$HOME/.local/share"
     export XDG_CACHE_HOME="$HOME/.cache"
-    export XDG_STATE_HOME="" 
+    export XDG_STATE_HOME="$HOME/.local/state" 
 
 # }}}
 # Locale Setup                                                              {{{
@@ -206,7 +206,7 @@
 # TaskWarrior (inactive)                                                    {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
-  # export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
+  export TASKRC="$XDG_CONFIG_HOME/taskwarrior/taskrc"
   # export TIMEWARRIORDB="$HOME/gtd/timewarrior"
   # export WIKI="~/"
 
@@ -228,8 +228,14 @@
 #   Setup databases on macOS.                                TODO Finish setup.
 #   ───────────────────────────────────────────────────────────────────────────
     if [[ "$OSTYPE" == "darwin"* ]]; then
+
 #   Setup PostgreSQL.
+#   # Option 1: (When installed from `https://postgresapp.com/downloads.html`)
     export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+
+    # Option 2: (When installed via `brew install postgresql@15`)
+    # export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
   # export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
   # export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
   # export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
