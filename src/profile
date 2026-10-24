@@ -103,11 +103,12 @@
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Add `.emacs.d/bin` to `$PATH` for easier usage of `doom` command.
-    export PATH="$PATH:$HOME/.emacs.d/bin"
+#   (Disabled while Doom is not installed: the directory does not exist.)
+  # export PATH="$PATH:$HOME/.emacs.d/bin"
 
 #   Define paths to config directories for Emacs & Doom.
     export EMACS_CONF="$XDG_CONFIG_HOME/emacs"
-    export DOOM_CONF="$XDG_CONFIG_HOME/emacs-doom"
+    export DOOM_CONF="$XDG_CONFIG_HOME/doom"
 
 #   Define path to directory where personal org-files are stored.
     export ORG_HOME="$HOME/org"
@@ -247,8 +248,8 @@
   # export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
   # export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 
-#   Setup MySQL.
-    export PATH="$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS"
+#   Setup MySQL. (Disabled while MySQL Workbench is not installed.)
+  # export PATH="$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS"
   # export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
   # export LDFLAGS="-L/opt/homebrew/opt/mysql-client/lib"
   # export CPPFLAGS="-I/opt/homebrew/opt/mysql-client/include"
@@ -306,12 +307,11 @@
   #
     export ANDROID_HOME="${HOME}/Library/Android/sdk"
     # export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
-    export PATH="${PATH}:${ANDROID_HOME}/tools"
-    export PATH="${PATH}:${ANDROID_HOME}/tools/bin"
+    export PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin"
     export PATH="${PATH}:${ANDROID_HOME}/platform-tools"
     export PATH="${PATH}:${ANDROID_HOME}/emulator"
 
-    version="29.0.13599879"
+    version="27.1.12297006"
     export NDK_HOME="${HOME}/Library/Android/sdk/ndk/${version}"
 
     export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
