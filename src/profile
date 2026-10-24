@@ -215,8 +215,9 @@
 # ═════════════════════════════════════════════════════════════════════════════
 # TODO Move to shellrc / zshrc ?!
 
-#   Source TMUX config.
-    tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
+#   Reload the TMUX config when a login shell starts inside a session. A new
+#   server reads it on its own.
+    [ -n "${TMUX:-}" ] && tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
 
 # }}}
 
