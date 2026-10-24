@@ -57,7 +57,7 @@
       export EDITOR="vim"; 
 #   Otherwise: Use neovim.
     else
-      export EDITOR="nvim"
+      export EDITOR="hx"
     fi
 #   Configure $VISUAL to just use $EDITOR as well (both are vi/vim, anyway).
     export VISUAL="$EDITOR"     
@@ -302,5 +302,19 @@
   # if [ "$OS" = "macOS" ]; then
   #     PATH=/usr/local/texlive/2019/bin/x86_64-darwin:"${PATH}"
   # fi
+  #
+    export ANDROID_HOME="${HOME}/Library/Android/sdk"
+    # export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+    export PATH="${PATH}:${ANDROID_HOME}/tools"
+    export PATH="${PATH}:${ANDROID_HOME}/tools/bin"
+    export PATH="${PATH}:${ANDROID_HOME}/platform-tools"
+    export PATH="${PATH}:${ANDROID_HOME}/emulator"
+
+    version="29.0.13599879"
+    export NDK_HOME="${HOME}/Library/Android/sdk/ndk/${version}"
+
+    export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
+    export PATH="$JAVA_HOME/bin:$PATH"
 
 # }}}
+

@@ -1,3 +1,4 @@
+#!/bin/sh
 # ╔═══════════════════════════════════════════════════════════════════════════╗
 # ║                       $XDG_CONFIG_HOME/shell/aliasrc                      ║
 # ╚═══════════════════════════════════════════════════════════════════════════╝
@@ -37,8 +38,8 @@
 #   ───────────────────────────────────────────────────────────────────────────
 #   NOTE: Be careful to remember the escape-symbols at the end of the line.
     export EXA_IGNORE="\
-        |*.aux|*.bbl|*.bcf|*.blg|*.fdb_latexmk|*.fls|*.lof|*.lot|*.out|*.nav|*.pyc|*.pyo|\
-        |*.run.xml|*.snm|*.synctex.gz|*.toc|.CFUserTextEncoding|.DS_Store|.Trash|._*|\
+        |.android|*.aux|*.bbl|*.bcf|*.blg|.cursor|*.fdb_latexmk|*.fls|*.lof|*.lot|*.out|*.nav|*.pyc|*.pyo|\
+        |*.run.xml|*.snm|*.synctex.gz|.tabiew_history|.task|*.toc|.CFUserTextEncoding|.DS_Store|.Trash|._*|\
         |.archey-ip|.chatgpt|.cups|.dart-tool|.dartServer|.dart|.dockerignore|.docker|\
         |.doom.d|.emacs.d|.flutter-devtools|.flutter|.gem|.git-credentials|.gitignore|.git|\
         |.ipynb_checkpoints|.localized|.matplotlib|.mono|.ob-jupyter|.pdbhistory|.pub-cache|\
@@ -143,6 +144,8 @@ alias h="clear && readme_help"
 
     alias u="z -"
 
+    alias cd.='cd $(realpath .)'  # NOTE: single quotes are important here, otherwise evaluation happens at sourcing of this file
+
 #   Re-define `cd ..` command(s).
 #   TODO Decide re: Use history of `zoxide` instead?
     alias cd..='cd ..'
@@ -195,7 +198,7 @@ alias h="clear && readme_help"
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Define shorter `touch` command.
-    alias t="touch"
+#   alias t="touch"
 
 # }}}
 # Configure `rmdir`. [INACTIVE] {{{
@@ -795,7 +798,8 @@ alias h="clear && readme_help"
 # Define alias `org` for `din-cli`.                                         {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
-alias org="/Users/vinc/org/project/all/develop_app_dewit/versions/2024-05-27\ v7\ din-server/din-cli/target/debug/din-cli"
+# Disabled 2026-09-14: target no longer exists; `org` is now the org-meta CLI.
+# alias org="/Users/vinc/org/project/all/develop_app_dewit/versions/2024-05-27\ v7\ din-server/din-cli/target/debug/din-cli"
 
 # }}}
 
@@ -813,4 +817,29 @@ alias xcp="xcp --gitignore"
 alias m="make"
 alias k="kalc"
 
+alias v="hx"
+
 #alias zellij="zellij --layout compact"
+
+alias t="task"
+
+
+
+
+
+
+
+global_replace() {
+    if [ "$#" -ne 3 ]; then
+        echo "Usage: global_replace <directory> <search_pattern> <replace_pattern>"
+        return 1
+    fi
+
+    local directory=$1
+    local search_pattern=$2
+    local replace_pattern=$3
+
+    find "$directory" -type f ! -name '.*' -exec grep -Iq . {} \; -and -exec sed -i '' "s|$search_pattern|$replace_pattern|g" {} +
+}
+
+alias gr='global_replace'

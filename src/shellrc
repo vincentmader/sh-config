@@ -11,4 +11,7 @@
 #   Source emsdk (quietly).                                          
     source $XDG_CONFIG_HOME/emsdk/emsdk_env.sh 2> /dev/null  
 
+#   NixOS home manager
+    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
