@@ -11,7 +11,7 @@
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Source zsh configuration.
-    alias source_zsh_config="source \"$XDG_CONFIG_HOME/zsh/zshrc\""
+    alias source_zsh_config="source \"$XDG_CONFIG_HOME/zsh/.zshrc\""
 
 # }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
@@ -109,7 +109,7 @@
 
 #   Define shorter command for `ranger`.
     # alias r="ranger"
-    alias r="lf"
+  # alias r="lf"
 #   TODO: Decide re: Switch to `lf` or `nnn` instead? -> `yazi` !
     alias r="yazi"
 
@@ -252,7 +252,10 @@ alias h="clear && readme_help"
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Make vim use the configuration file `$XDG_CONFIG_HOME/vim/vimrc`.
-    alias vim="vim -u $XDG_CONFIG_HOME/vim/vimrc"
+#   (Disabled: that file does not exist, and `-u` with a missing file starts vim
+#   without any configuration, not even its defaults. Vim looks for
+#   `$XDG_CONFIG_HOME/vim/vimrc` on its own.)
+  # alias vim="vim -u $XDG_CONFIG_HOME/vim/vimrc"
 
 #   Make nvim use the configuration file `$NVIMRC`.
   # alias nvim="nvim -u $NVIMRC"
@@ -280,9 +283,9 @@ alias h="clear && readme_help"
     # alias nvim="nvim_func"
     # alias nvim="nvim @"
 
-#   Define shorter `nvim` command.
-#   alias v="hx"
-    alias v="nvim"
+#   Define shorter editor command.
+    alias v="hx"
+  # alias v="nvim"
 
 # }}}
 # ╭───────────────────────────────────────────────────────────────────────────╮
@@ -291,8 +294,8 @@ alias h="clear && readme_help"
 # Configure "Julia".                                                        {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
-#   Define a shorter command for starting the Julia interpreter.
-    alias jl="julia"
+#   Define a shorter command for starting the Julia interpreter. (Not installed.)
+  # alias jl="julia"
 
 # }}}
 # Configure "Python" & `python-pip`.                                        {{{
@@ -409,6 +412,7 @@ alias h="clear && readme_help"
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Re-define `wget` command to use custom history-file.
+    [ -d "$XDG_CACHE_HOME/wget" ] || mkdir -p "$XDG_CACHE_HOME/wget"
     alias wget="wget --hsts-file \"$XDG_CACHE_HOME/wget/wget-hsts\""
 
 # }}}
@@ -416,16 +420,17 @@ alias h="clear && readme_help"
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Define shorter `web_search` command.
-#   NOTE: See `../zsh/zprofile` for search-engine definitions.
+#   NOTE: See `../zsh/.zshrc` for search-engine definitions.
     alias web="web_search"
 #   TODO Think re: Create a separate `zsh_aliasrc`?
 
 # }}}
-# Configure `youtube-dl`.                                                   {{{
+# Configure `yt-dlp`.                                                      {{{
 # ═════════════════════════════════════════════════════════════════════════════
 
 #   Define shortcut to youtube scraper.
-    alias ytdl="youtube-dl"
+  # alias ytdl="youtube-dl"  # (youtube-dl is unmaintained)
+    alias ytdl="yt-dlp"
   # alias ytdl="yes | pytube3 $1 -a -f -t='$XDG_CONFIG_HOME/symlinks/dl'"
 
 # }}}
@@ -473,14 +478,14 @@ alias h="clear && readme_help"
 # }}}
 # Configure `qutebrowser`.                                                  {{{
 # ═════════════════════════════════════════════════════════════════════════════
-# TODO: Only do this when it's installed.
+# (Disabled: qutebrowser is not installed.)
 
 #   Increase browser performance.
-    alias qutebrowser="qutebrowser\
-        --qt-flag ignore-gpu-blacklist\
-        --qt-flag enable-gpu-rasterization\
-        --qt-flag enable-native-gpu-memory-buffers\
-        --qt-flag num-raster-threads=4"
+  # alias qutebrowser="qutebrowser\
+  #     --qt-flag ignore-gpu-blacklist\
+  #     --qt-flag enable-gpu-rasterization\
+  #     --qt-flag enable-native-gpu-memory-buffers\
+  #     --qt-flag num-raster-threads=4"
 
 # }}}
 # Configure disk utilies.                                                   {{{
@@ -504,18 +509,20 @@ alias h="clear && readme_help"
 #   NOTE: See also `eza`, `zoxide`, & `sd`.
 
 #   RIP grep.
-    alias grep="rg"
+#   (Disabled: `rg` takes different flags, so commands pasted from docs fail.
+#   Call `rg` by name instead. The same applies to `du` and `diff` below.)
+  # alias grep="rg"
 
 #   Concatenate: cat -> bat
     alias cat="bat"
     alias cat.="cat **/*"
-    alias lc='lolcat'
+  # alias lc='lolcat'  # (lolcat is not installed)
 
 #   Find.
 #   alias find="fd"
 
 #   Show disk usage.
-    alias du="clear && dust"
+  # alias du="clear && dust"
 
 # }}}
 # Unsorted                                                                  {{{
@@ -540,7 +547,7 @@ alias h="clear && readme_help"
     alias gotop="gotop --color=monokai"
 
 #   Use `colordiff` instead of default `diff` command -> color-support.
-    alias diff='colordiff'  
+  # alias diff='colordiff'  
 #   TODO: Decide re: Use `diff --color=auto` instead? -> Uninstall `colordiff`.
 
 #   Define function/command to turn .gif file into video.
@@ -555,7 +562,7 @@ alias h="clear && readme_help"
 # ╰───────────────────────────────────────────────────────────────────────────╯
 
 #   Make `archey` & `neofetch` clear the screen before printing.
-    alias archey='clear && archey'
+  # alias archey='clear && archey'  # (archey is not installed)
     alias neofetch="clear && neofetch"
 
 #   Show a zoomable world-map in the terminal. (very impressive!)
@@ -565,16 +572,13 @@ alias h="clear && readme_help"
     alias starwars="telnet towel.blinkenlights.nl"
 
 #   Configure `lolcat` to also animate colors, & clear screen before printing.
-    alias lolcat='clear && lolcat -a'
+  # alias lolcat='clear && lolcat -a'  # (lolcat is not installed)
 
 #   Become a real hackerman.
     alias cmx="cmatrix -b"
 
 #   Get life-advice from fortune-cow.
-    alias fortunecow='fortune -s | cowsay'
-
-#   Show themes.
-    alias gogh='bash -c "$(curl -sLo- https://git.io/vQgMr)"'
+  # alias fortunecow='fortune -s | cowsay'  # (fortune & cowsay are not installed)
 
 #   Show nr. of lines of code grouped by programming/mark-up language.
     alias tokei="clear && echo && tokei"
@@ -817,7 +821,6 @@ alias xcp="xcp --gitignore"
 alias m="make"
 alias k="kalc"
 
-alias v="hx"
 
 #alias zellij="zellij --layout compact"
 
