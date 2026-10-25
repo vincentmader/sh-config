@@ -214,11 +214,8 @@
 # }}}
 # TMUX                                                                      {{{
 # ═════════════════════════════════════════════════════════════════════════════
-# TODO Move to shellrc / zshrc ?!
-
-#   Reload the TMUX config when a login shell starts inside a session. A new
-#   server reads it on its own.
-    [ -n "${TMUX:-}" ] && tmux source "$XDG_CONFIG_HOME/tmux/tmux.conf"
+#   Nothing to do here: the tmux server reads its config when it starts, and
+#   `prefix r` reloads it (see tmux.conf).
 
 # }}}
 
